@@ -15,6 +15,21 @@ class htmlContainer(wx.Panel):
 
 		htmlSizer.Add(self.browser, 1, wx.EXPAND)
 		self.SetSizer(htmlSizer)
+		self.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.getFunctionFromURL, self.browser)
+
+	def getFunctionFromURL(self, event):
+		url = str(event.GetURL())
+		if url.startswith('python://'):
+			function_name = url[len('python://'):]
+			event.Veto()
+
+			# Run Python function
+			self.runFunction(function_name)
+
+	def runFunction(self, function_name):
+		print function_name
+
+
 
 
 

@@ -15,6 +15,10 @@ class MainFrame(gui.wx2jsWindow):
 		print wx.version()
 		print 'App loaded'
 
+
+
+
+
 	# Run this function when button is pressed
 	def sendVarToJS(self, event):
 		js_function = 'document.getElementById("variable").innerHTML = "%s";' % self.wxInputField.GetValue()
