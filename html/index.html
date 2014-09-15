@@ -10,17 +10,17 @@
 
 <body>
   <script src="scripts.js"></script>
-  <h1 id="variable">Hello world?</h1>
+  <p id="variable">Python says</p>
+  <form>
   <input 
-  	id="reloadButton" 
+  	id="textInput" 
+  	type="text" 
+  	value="">
+  <input 
+  	id="sendToPythonButton" 
   	type="button" 
-  	value="Show Menu" 
-  	onclick="setTitle('showMenu')" />
-  	<input 
-  	id="reloadButton" 
-  	type="button" 
-  	value="get Data" 
-  	onclick="setTitle('getData')" />
-  	<a href="python://menu">Show menu</a>
+  	value="Send to Python" 
+  	onclick="pythonFromInput()" />
+  </form>
 </body>
 </html>

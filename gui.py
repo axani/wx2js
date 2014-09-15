@@ -27,10 +27,14 @@ class wx2jsWindow ( wx.Frame ):
 		
 		bSizer2 = wx.BoxSizer( wx.VERTICAL )
 		
+		self.JSText = wx.StaticText( self, wx.ID_ANY, u"JavaScript says", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.JSText.Wrap( -1 )
+		bSizer2.Add( self.JSText, 0, wx.ALL, 5 )
+		
 		self.wxInputField = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer2.Add( self.wxInputField, 0, wx.ALL|wx.EXPAND, 5 )
 		
-		self.myButton = myButtonSubclass( self, wx.ID_ANY, u"Send variable to JS", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.myButton = myButtonSubclass( self, wx.ID_ANY, u"Send to JS", wx.DefaultPosition, wx.DefaultSize, 0 )
 		bSizer2.Add( self.myButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		
