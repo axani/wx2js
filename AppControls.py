@@ -10,10 +10,10 @@ class htmlContainer(wx.Panel):
 		htmlSizer = wx.BoxSizer(wx.VERTICAL)
 		
 		website = os.path.realpath('html/index.html')
-		browser = wx.html2.WebView.New(self)
-		browser.LoadURL(website)
+		self.browser = wx.html2.WebView.New(self)
+		self.browser.LoadURL(website)
 
-		htmlSizer.Add(browser, 1, wx.EXPAND)
+		htmlSizer.Add(self.browser, 1, wx.EXPAND)
 		self.SetSizer(htmlSizer)
 
 

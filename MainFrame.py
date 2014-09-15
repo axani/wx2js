@@ -13,4 +13,5 @@ class MainFrame(gui.wx2jsWindow):
 
 	# Run this function when button is pressed
 	def sendVarToJS(self, event):
-		print 'Button clicked'
+		self.htmlPanel.browser.RunScript('document.body.style.background = "red";')
+		print 'Button clicked', self.wxInputField.GetValue()
