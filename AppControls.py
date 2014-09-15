@@ -25,7 +25,7 @@ class htmlContainer(wx.Panel):
 
 			# Run Python function
 			self.runFunction(function_name)
-			MainFrame.testFunction()
+			#MainFrame.testFunction()
 
 	def runFunction(self, function_name):
 		print 'JavaScript to Python:', function_name
