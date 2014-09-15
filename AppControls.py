@@ -25,9 +25,14 @@ class htmlContainer(wx.Panel):
 
 			# Run Python function
 			self.runFunction(function_name)
+			MainFrame.testFunction()
 
 	def runFunction(self, function_name):
-		print function_name
+		print 'JavaScript to Python:', function_name
+
+		# Change static text
+		## Does not work!
+		#self.parent.JSText.SetLabel(function_name)
 
 
 

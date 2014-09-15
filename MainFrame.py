@@ -16,11 +16,12 @@ class MainFrame(gui.wx2jsWindow):
 		print 'App loaded'
 
 
-
+	def testFunction(self):
+		print 'yay, you found the testfunction'
 
 
 	# Run this function when button is pressed
 	def sendVarToJS(self, event):
 		js_function = 'document.getElementById("variable").innerHTML = "%s";' % self.wxInputField.GetValue()
 		self.htmlPanel.browser.RunScript(js_function)
-		print 'Button clicked', self.wxInputField.GetValue()
+		print 'Python to javascript:', self.wxInputField.GetValue()

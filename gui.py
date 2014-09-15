@@ -61,6 +61,7 @@ class wx2jsWindow ( wx.Frame ):
 		pass
 	
 	
+	
 	# Virtual event handlers, overide them in your derived class
 	def sendVarToJS( self, event ):
 		event.Skip()
