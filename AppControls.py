@@ -33,6 +33,8 @@ class htmlContainer(wx.Panel):
 		# Change static text
 		## Does not work!
 		#self.parent.JSText.SetLabel(function_name)
+		wx.GetApp().TopWindow.JSText.Label = function_name
+		#.SetLabel(function_name)
 
 
 
