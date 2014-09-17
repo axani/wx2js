@@ -19,31 +19,40 @@ import wx.xrc
 class wx2jsWindow ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 571,435 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 600,435 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
 		boxSizer = wx.BoxSizer( wx.HORIZONTAL )
 		
-		bSizer2 = wx.BoxSizer( wx.VERTICAL )
+		self.myMenu = wx.Panel( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.myMenu.SetBackgroundColour( wx.Colour( 255, 255, 255 ) )
+		self.myMenu.Hide()
+		self.myMenu.SetMaxSize( wx.Size( 300,-1 ) )
 		
-		self.JSText = wx.StaticText( self, wx.ID_ANY, u"JavaScript says", wx.DefaultPosition, wx.DefaultSize, 0 )
+		menuSizer = wx.BoxSizer( wx.VERTICAL )
+		
+		menuSizer.SetMinSize( wx.Size( 10,-1 ) ) 
+		self.JSText = wx.StaticText( self.myMenu, wx.ID_ANY, u"JavaScript says", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.JSText.Wrap( -1 )
-		bSizer2.Add( self.JSText, 0, wx.ALL, 5 )
+		menuSizer.Add( self.JSText, 0, wx.ALL, 5 )
 		
-		self.wxInputField = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.wxInputField, 0, wx.ALL|wx.EXPAND, 5 )
+		self.wxInputField = wx.TextCtrl( self.myMenu, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+		menuSizer.Add( self.wxInputField, 0, wx.ALL|wx.EXPAND, 5 )
 		
-		self.myButton = myButtonSubclass( self, wx.ID_ANY, u"Send to JS", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.myButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
+		self.myButton = myButtonSubclass( self.myMenu, wx.ID_ANY, u"Send to JS", wx.DefaultPosition, wx.DefaultSize, 0 )
+		menuSizer.Add( self.myButton, 0, wx.ALL|wx.ALIGN_CENTER_HORIZONTAL, 5 )
 		
 		
-		boxSizer.Add( bSizer2, 1, wx.EXPAND, 5 )
+		self.myMenu.SetSizer( menuSizer )
+		self.myMenu.Layout()
+		menuSizer.Fit( self.myMenu )
+		boxSizer.Add( self.myMenu, 1, wx.EXPAND |wx.ALL, 0 )
 		
 		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 		
 		self.htmlPanel = htmlContainer( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-		bSizer3.Add( self.htmlPanel, 1, wx.EXPAND |wx.ALL, 5 )
+		bSizer3.Add( self.htmlPanel, 1, wx.EXPAND |wx.ALL, 0 )
 		
 		
 		boxSizer.Add( bSizer3, 1, wx.EXPAND, 5 )
@@ -59,7 +68,6 @@ class wx2jsWindow ( wx.Frame ):
 	
 	def __del__( self ):
 		pass
-	
 	
 	
 	# Virtual event handlers, overide them in your derived class

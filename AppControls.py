@@ -36,6 +36,14 @@ class htmlContainer(wx.Panel):
 		wx.GetApp().TopWindow.JSText.Label = function_name
 		#.SetLabel(function_name)
 
+		if function_name == 'showMenu':
+			wx.GetApp().TopWindow.myMenu.Show()
+			wx.GetApp().TopWindow.Layout()
+
+		if function_name == 'closeMenu':
+			wx.GetApp().TopWindow.myMenu.Hide()
+			wx.GetApp().TopWindow.Layout()
+
 
 
 

@@ -1,4 +1,38 @@
-body {
+body, html {
 	background-color: aqua;
 	color: white;
+	white-space: nowrap;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#showMenu {
+	color: red;
+	width: 20px;
+	text-align: center;
+	display: inline-block;
+	background: yellow;
+	cursor: pointer;
+}
+
+.menu, .menu-border {
+	background-color: white;
+	display: inline-block;
+	height: 100%;
+	vertical-align: top;
+	margin: 0;
+}
+
+.menu-border {
+	width: 20px;
+	padding: 0;
+}
+
+.content {
+	display: inline-block;
+	background-color: red;
+	vertical-align: top;
+	margin: 0;
 }
