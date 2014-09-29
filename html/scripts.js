@@ -1,4 +1,36 @@
 $(function() {
+
+	// Drop file  behaviour
+	$('body').css('background-color', 'yellow')
+	$('body').on(
+		'dragover',
+		function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+	)
+
+	$('body').on(
+		'dragenter',
+		function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+		}
+	)
+
+	$('body').on(
+		'drop',
+		function(e) {
+			if(e.originalEvent.dataTransfer) {
+				if(e.originalEvent.dataTransfer.files.length) {
+					e.preventDefault();
+					e.stopPropagation();
+					alert('file dropped');
+				}
+			}
+		}
+	)
+
 	setTitle = function(title) {
 		document.title = title
 		currentState = document.body.innerHTML;
