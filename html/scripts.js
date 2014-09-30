@@ -7,6 +7,7 @@ $(function() {
 		function(e) {
 			e.preventDefault();
 			e.stopPropagation();
+
 		}
 	)
 
@@ -15,6 +16,18 @@ $(function() {
 		function(e) {
 			e.preventDefault();
 			e.stopPropagation();
+			$('.drop-event').toggleClass('active');
+			console.log('enter');
+		}
+	)
+
+	$('body').on(
+		'dragleave',
+		function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			$('.drop-event').toggleClass('active');
+			console.log('leave');
 		}
 	)
 
@@ -26,6 +39,7 @@ $(function() {
 					e.preventDefault();
 					e.stopPropagation();
 					alert('file dropped');
+					$('.drop-event').removeClass('active');
 				}
 			}
 		}

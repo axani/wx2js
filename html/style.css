@@ -36,3 +36,19 @@ body, html {
 	vertical-align: top;
 	margin: 0;
 }
+
+.drop-event {
+	display: none;
+}
+
+.drop-event.active {
+	border-radius: 0.5em;
+	display:block;
+	position: fixed;
+	top: 0.5em;
+	right: 0.5em;
+	bottom: 0.5em;
+	left: 0.5em;
+	background-color: lime;
+	opacity: 0.3;
+}
