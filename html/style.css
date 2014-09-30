@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 body, html {
 	background-color: aqua;
 	color: white;
@@ -18,7 +22,7 @@ body, html {
 }
 
 .menu, .menu-border {
-	background-color: white;
+	background-color: aqua;
 	display: inline-block;
 	height: 100%;
 	vertical-align: top;
@@ -35,6 +39,26 @@ body, html {
 	background-color: red;
 	vertical-align: top;
 	margin: 0;
+	position: relative;
+}
+
+.message {
+	display: none;
+}
+
+.message.active {
+	display: block;
+	color: black;
+	width: 100%;
+	height: auto;
+	background-color: white;
+	text-align: center;
+	padding: 0.5em;
+}
+
+.message > img {
+	vertical-align: middle;
+	margin: 0 1em;
 }
 
 .drop-event {
