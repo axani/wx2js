@@ -1,6 +1,7 @@
 import wx
 import wx.html2
 import os
+import json
 
 class htmlContainer(wx.Panel):
 	def __init__(self, *args, **kwargs):
@@ -16,6 +17,10 @@ class htmlContainer(wx.Panel):
 		htmlSizer.Add(self.browser, 1, wx.EXPAND)
 		self.SetSizer(htmlSizer)
 		self.Bind(wx.html2.EVT_WEBVIEW_NAVIGATING, self.getFunctionFromURL, self.browser)
+		self.Bind(wx.html2.EVT_WEBVIEW_TITLE_CHANGED, self.pageLoaded, self.browser)
+
+	def pageLoaded(self, event):
+		print 'Seite geladen'
 
 	def getFunctionFromURL(self, event):
 		url = str(event.GetURL())
@@ -26,6 +31,30 @@ class htmlContainer(wx.Panel):
 			# Run Python function
 			self.runFunction(function_name)
 			#MainFrame.testFunction()
+
+		if url.startswith('python-data://'):
+			data = url[len('python-data://'):]
+			data_clean = self.cleanString(data)
+			data_json = json.loads(data_clean)
+			self.runFunction_withAttr(data_json["functionName"], data_json["attr"])
+	
+	def cleanString(self, str):
+		return str.replace('%7B', '{').replace('%22', '\"').replace('%7D', '}')
+	
+	def runFunction_withAttr(self, function_name, attr):
+		if function_name == 'printXTimes':
+
+
+			for i in xrange(int(attr) *100):
+				if i == 0: 
+					wx.GetApp().TopWindow.htmlPanel.browser.RunScript('showLoading()')
+
+				if i == int(attr) * 99:
+					wx.GetApp().TopWindow.htmlPanel.browser.RunScript('endLoading()')
+				print i
+
+			
+
 
 	def runFunction(self, function_name):
 		print 'JavaScript to Python:', function_name

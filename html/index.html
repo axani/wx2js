@@ -11,7 +11,7 @@
 <body>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="scripts.js"></script>
-  <div class="message">
+  <div class="message active">
     <img src="loading.gif"> Loading ...
   </div>
   <div class="menu">
@@ -29,6 +29,18 @@
       	type="button" 
       	value="Send to Python" 
       	onclick="pythonFromInput()" />
+    </form>
+    <form>
+      Print x times in python console:
+      <input 
+        id="printXTimes" 
+        type="number" 
+        value="">
+      <input 
+        id="sendToPythonButton" 
+        type="button" 
+        value="Send to Python" 
+        onclick="python('printXTimes')" />
     </form>
     <div class="drop-event">
     </div>

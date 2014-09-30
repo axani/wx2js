@@ -45,14 +45,22 @@ $(function() {
 		}
 	)
 
+	// Python actions
+
 	setTitle = function(title) {
 		document.title = title
 		currentState = document.body.innerHTML;
 		document.body.innerHTML = currentState + '<p>' + title + '</p>';
 	}
 
-	python = function(attr) {
-		window.location.href="python://" + attr
+	python = function(functionName) {
+		dict = {
+			"functionName": functionName,
+			"attr": $('#' + functionName).val()
+		}
+		console.log(JSON.stringify(dict))
+		console.log(dict)
+		window.location.href="python-data://" + JSON.stringify(dict)
 	}
 
 	pythonFromInput = function() {
@@ -63,6 +71,20 @@ $(function() {
 	test2 = function(attr) {
 		console.log(attr)
 	}
+
+	// Get functions
+
+	showLoading = function() {
+		$("body").css("background-color", "black");
+		document.title = 'neu'
+	}
+
+	endLoading = function() {
+		$("body").css("background-color", "blue");
+		document.title = 'neu2'
+	}
+
+	// Menu behaviour
 
 	extended_menu = false
 	$('#showMenu').on('click', function() {
